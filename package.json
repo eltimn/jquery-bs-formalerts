@@ -1,36 +1,6 @@
 {
   "name": "bsFormAlerts",
-  "title": "Bootstrap Form Alerts",
   "version": "0.1.0",
-  "description": "A jQuery plugin for displaying Bootstrap form alerts via jQuery events.",
-  "main": "src/jquery.bsFormAlerts.js",
-  "directories": {
-    "example": "examples"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/eltimn/jquery-bs-formalerts.git"
-  },
-  "keywords": [
-    "bootstrap",
-    "form",
-    "alert"
-  ],
-  "dependencies": {
-    "jQuery": ">= 1.7.4",
-    "twitter-bootstrap": ">= 2.1.1"
-  },
-  "author": "Tim Nelson",
-  "licenses": [
-    {
-        "type": "Apache-2.0"
-      , "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    }
-  ],
-  "readmeFilename": "README.md",
   "devDependencies": {
     "grunt": "~0.4.0",
     "grunt-contrib-uglify": "~0.1.2",
