@@ -1,14 +1,14 @@
-# Bootstrap Form Alerts
+# jQuery Bootstrap Form Alerts
 
-> Event based Bootstrap form alerts.
+> A jQuery plugin for displaying Bootstrap form alerts via jQuery events.
 
 ## Requires
-- jQuery ( no minimum version identified yet )
-- bootstrap
+- jQuery
+- Bootstrap
 
 [Docs](http://eltimn.github.com/jquery-bs-formalerts)
 
-[Download](https://raw.github.com/eltimn/jquery-bs-formalerts/master/build/jquery-bsFormAlerts.min.js)
+[Download](https://raw.github.com/eltimn/jquery-bs-formalerts/master/build/jquery.bsFormAlerts.min.js)
 
-**License**: MIT [http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php)
+**License**: Apache 2.0 [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
 

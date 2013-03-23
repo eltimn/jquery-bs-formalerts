@@ -2,7 +2,7 @@
   "name": "bsFormAlerts",
   "title": "Bootstrap Form Alerts",
   "version": "0.1.0",
-  "description": "Event based Bootstrap form alerts.",
+  "description": "A jQuery plugin for displaying Bootstrap form alerts via jQuery events.",
   "main": "src/jquery.bsFormAlerts.js",
   "directories": {
     "example": "examples"
