@@ -1,5 +1,5 @@
 /**
-  * jQuery plugin for rendering id notices in a Lift webapp.
+  * A jQuery plugin for displaying Bootstrap form alerts via jQuery events.
   */
 ;(function($, window, document, undefined) {
   "use strict";
