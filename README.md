@@ -10,4 +10,4 @@
 
 [Download](https://raw.github.com/eltimn/jquery-bs-formalerts/master/build/jquery.bsFormAlerts.min.js)
 
-**License**: Apache 2.0 [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
+**License**: MIT [http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php)

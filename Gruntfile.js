@@ -16,7 +16,7 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        banner: '/*! <%= pkg.name %> version: <%= pkg.version %>\n*  <%= grunt.template.today("yyyy-mm-dd") %>\n*  Author: Tim Nelson\n*  Website: http://eltimn.github.com/jquery-bs-formalerts\n*  Apache 2.0 License http://www.apache.org/licenses/LICENSE-2.0\n*/\n'
+        banner: '/*! <%= pkg.name %> version: <%= pkg.version %>\n*  <%= grunt.template.today("yyyy-mm-dd") %>\n*  Author: Tim Nelson\n*  Website: http://eltimn.github.com/jquery-bs-formalerts\n*  MIT License http://www.opensource.org/licenses/mit-license.php\n*/\n'
       },
       build: {
         src: 'src/jquery.<%= pkg.name %>.js',
