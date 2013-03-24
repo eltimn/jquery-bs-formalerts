@@ -5256,15 +5256,15 @@ a.badge:focus {
 /**
   * For coloring form alerts
   */
-.notice-block .warning {
+.alert-block .warning {
   color: #c09853;
 }
-.notice-block .error {
+.alert-block .error {
   color: #b94a48;
 }
-.notice-block .success {
+.alert-block .success {
   color: #468847;
 }
-.notice-block .info {
+.alert-block .info {
   color: #3a87ad;
 }
