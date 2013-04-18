@@ -51,7 +51,7 @@
         $.each(msgs, function(ix, it) {
           if (it.message && it.message.length > 0) {
             var $li = $("<li/>", {
-              'class': bsPriority(it.priority)
+              'class': 'text-'+bsPriority(it.priority)
             }).html(it.message);
             $ul.append($li);
           }
@@ -68,6 +68,9 @@
   function bsPriority(it) {
     if (it === "notice") {
       return "info";
+    }
+    else if (it === "danger") {
+      return "error";
     }
     return it;
   }
