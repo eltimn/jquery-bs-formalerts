@@ -36,7 +36,6 @@
                     <li class=""><a href="#usage"><i class="icon-chevron-right"></i> Usage</a></li>
                     <li class=""><a href="#options"><i class="icon-chevron-right"></i> Options</a></li>
                     <li class=""><a href="#events"><i class="icon-chevron-right"></i> Events</a></li>
-                    <li class=""><a href="#css"><i class="icon-chevron-right"></i> CSS</a></li>
                 </ul>
             </div>
             <div class="span9">
@@ -68,7 +67,7 @@
                         <label class="control-label" for="inputExample">Example</label>
                         <div class="controls">
                           <input type="text" id="inputExample" placeholder="Example">
-                          <span class="alert-block" data-alertid="example"></span>
+                          <span data-alertid="example"></span>
                         </div>
                       </div>
                       <div class="control-group">
@@ -83,7 +82,7 @@
     &lt;label class="control-label" for="inputExample"&gt;Example&lt;/label&gt;
     &lt;div class="controls"&gt;
       &lt;input type="text" id="inputExample" placeholder="Example"&gt;
-      &lt;span class="alert-block" data-alertid="example"&gt;&lt;/span&gt;
+      &lt;span data-alertid="example"&gt;&lt;/span&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="control-group"&gt;
@@ -126,7 +125,7 @@ $(function(){
 
                   <h3>Markup</h3>
                   <p>Just add <code>data-alertid="example"</code> to your element to bind automatically.</p>
-                  <pre class="prettyprint linenums">&lt;span class="alert-block" data-alertid="example"&gt;&lt;/span&gt;</pre>
+                  <pre class="prettyprint linenums">&lt;span data-alertid="example"&gt;&lt;/span&gt;</pre>
                 </section>
                 <section id="options">
                   <div class="page-header">
@@ -179,28 +178,6 @@ $(document).trigger("clear-alert-id.example");</pre>
 $(document).trigger("clear-alert-id");</pre>
 
                 <div class="alert alert-info"><strong>Tip:</strong> Copy and paste the above commands into the JavaScript console to see them in action.</div>
-                </section>
-
-                <section id="css">
-                    <div class="page-header">
-                        <h1>CSS</h1>
-                    </div>
-                    <p>CSS needs to be added to get proper coloring of the alerts. If you build Bootstrap yourself, you can add the following LESS to your build.</p>
-                    <pre class="prettyprint linenums">
-.alert-block {
-  .warning {
-    color: @warningText;
-  }
-  .error {
-    color: @errorText;
-  }
-  .success {
-    color: @successText;
-  }
-  .info {
-    color: @infoText;
-  }
-}                    </pre>
                 </section>
 
             </div>

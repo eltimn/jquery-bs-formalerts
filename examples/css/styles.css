@@ -5253,18 +5253,3 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
-/**
-  * For coloring form alerts
-  */
-.alert-block .warning {
-  color: #c09853;
-}
-.alert-block .error {
-  color: #b94a48;
-}
-.alert-block .success {
-  color: #468847;
-}
-.alert-block .info {
-  color: #3a87ad;
-}
