@@ -62,7 +62,7 @@
         $this.append($ul);
         var p = bsPriority(priority);
         if (p === "danger") { p = "error"; }
-        $formGroup.addClass(self.options.css_prefx+p);
+        $formGroup.addClass(self.options.css_prefix+p);
       }
     };
 
@@ -110,10 +110,10 @@
     }
 
     function clearFormGroup($ele) {
-      $ele.removeClass(self.options.css_prefx+"info");
-      $ele.removeClass(self.options.css_prefx+"warning");
-      $ele.removeClass(self.options.css_prefx+"error");
-      $ele.removeClass(self.options.css_prefx+"success");
+      $ele.removeClass(self.options.css_prefix+"info");
+      $ele.removeClass(self.options.css_prefix+"warning");
+      $ele.removeClass(self.options.css_prefix+"error");
+      $ele.removeClass(self.options.css_prefix+"success");
     }
   };
 
@@ -142,7 +142,7 @@
   $.fn.bsFormAlerts.defaults = {
     alertid: "bs-form-alert",
     outer_query: "div.form-group",
-    css_prefx: "has-",
+    css_prefix: "has-",
     error_css: "danger"
   };
 
