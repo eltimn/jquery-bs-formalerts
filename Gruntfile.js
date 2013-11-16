@@ -25,7 +25,7 @@ module.exports = function(grunt) {
     compress: {
       main: {
         options: {
-          archive: 'docs.tgz'
+          archive: 'docs.tar.gz'
         },
         files: [
           {expand: true, cwd: 'docs/', src: ['**'], dest: '/'}
