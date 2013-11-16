@@ -146,7 +146,6 @@
     error_css: "danger"
   };
 
-
   /* BsFormAlerts no conflict
    * =============== */
 

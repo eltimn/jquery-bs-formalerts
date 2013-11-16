@@ -67,7 +67,7 @@
                         <label class="control-label" for="inputExample">Example</label>
                         <div class="controls">
                           <input type="text" id="inputExample" placeholder="Example">
-                          <span data-alertid="example" data-outer_query="div.control-group" data-css_prefx="" data-error_css="error"></span>
+                          <span data-alertid="example"></span>
                         </div>
                       </div>
                       <div class="control-group">
@@ -159,8 +159,24 @@ $(function(){
                        <td>'has-'</td>
                        <td>The prefix to use for the alert css classes. For Bootstrap 2 set this to ''.</td>
                      </tr>
+                     <tr>
+                       <td>error_css</td>
+                       <td>string</td>
+                       <td>'danger'</td>
+                       <td>The alert CSS class suffix to use for danger. For Bootstrap 2 set this to 'error'.</td>
+                     </tr>
                     </tbody>
                   </table>
+
+                  <p>For use with Bootstrap 2, you can override the defaults so you don't have to supply them on the tags.</p>
+<pre class="prettyprint linenums">
+$.fn.bsFormAlerts.defaults = {
+  alertid: "bs-form-alert",
+  outer_query: "div.control-group",
+  css_prefx: "",
+  error_css: "error"
+};
+</pre>
                 </section>
                 <section id="events">
                     <div class="page-header">
@@ -210,6 +226,13 @@ $(document).trigger("clear-alert-id");</pre>
     <script src="js/prettify.js"></script>
     <script src="js/jquery.bsFormAlerts.js"></script>
     <script>
+      $.fn.bsFormAlerts.defaults = {
+        alertid: "bs-form-alert",
+        outer_query: "div.control-group",
+        css_prefx: "",
+        error_css: "error"
+      };
+
       $(function(){
         var $window = $(window);
         // side bar
