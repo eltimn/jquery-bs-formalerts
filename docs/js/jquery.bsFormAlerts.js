@@ -31,19 +31,19 @@
     constructor: BsFormAlerts,
     clear: function() {
       var $this = $(this.element);
-      var $controlGroup = controlGroup($this);
-      clearControlGroup($controlGroup);
+      var $formGroup = this.formGroup($this);
+      this.clearFormGroup($formGroup, this.options);
       $this.html("");
     },
     renderAlerts: function(msgs) {
       var $this = $(this.element);
 
       if (msgs.length > 0) {
-        var $controlGroup = controlGroup($this);
+        var $formGroup = this.formGroup($this);
         var priority = highestPriority(msgs);
 
         // clear element
-        clearControlGroup($controlGroup);
+        this.clearFormGroup($formGroup, this.options);
         $this.html("");
 
         var $ul = $("<ul/>");
@@ -58,9 +58,19 @@
         });
 
         $this.append($ul);
-
-        $controlGroup.addClass(bsPriority(priority));
+        var p = bsPriority(priority);
+        if (p === "danger") { p = "error"; }
+        $formGroup.addClass(this.options.css_prefx+p);
       }
+    },
+    formGroup: function($ele) {
+      return $ele.closest(this.options.outer_query);
+    },
+    clearFormGroup: function($ele) {
+      $ele.removeClass(this.options.css_prefx+"info");
+      $ele.removeClass(this.options.css_prefx+"warning");
+      $ele.removeClass(this.options.css_prefx+"error");
+      $ele.removeClass(this.options.css_prefx+"success");
     }
   };
 
@@ -69,8 +79,8 @@
     if (it === "notice") {
       return "info";
     }
-    else if (it === "danger") {
-      return "error";
+    else if (it === "error") {
+      return "danger";
     }
     return it;
   }
@@ -103,17 +113,6 @@
     return "info";
   }
 
-  function controlGroup($ele) {
-    return $ele.closest("div.control-group");
-  }
-
-  function clearControlGroup($ele) {
-    $ele.removeClass("info");
-    $ele.removeClass("warning");
-    $ele.removeClass("error");
-    $ele.removeClass("success");
-  }
-
   /* BsFormAlerts plugin definition
    * ===================== */
 
@@ -137,7 +136,9 @@
   $.fn.bsFormAlerts.Constructor = BsFormAlerts;
 
   $.fn.bsFormAlerts.defaults = {
-    alertid: "bs-form-alert"
+    alertid: "bs-form-alert",
+    outer_query: "div.form-group",
+    css_prefx: "has-"
   };
 
 

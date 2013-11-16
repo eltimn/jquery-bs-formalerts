@@ -63,14 +63,14 @@
                     </div>
                     <p>Click submit to see an error alert on the example input field.</p>
                     <form class="bs-docs-example form-horizontal" id="example-form">
-                      <div class="control-group">
+                      <div class="form-group">
                         <label class="control-label" for="inputExample">Example</label>
                         <div class="controls">
                           <input type="text" id="inputExample" placeholder="Example">
                           <span data-alertid="example"></span>
                         </div>
                       </div>
-                      <div class="control-group">
+                      <div class="form-group">
                         <div class="controls">
                           <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
@@ -78,14 +78,14 @@
                     </form>
 <pre class="prettyprint linenums">
 &lt;form class="form-horizontal" id="example-form"&gt;
-  &lt;div class="control-group"&gt;
+  &lt;div class="form-group"&gt;
     &lt;label class="control-label" for="inputExample"&gt;Example&lt;/label&gt;
     &lt;div class="controls"&gt;
       &lt;input type="text" id="inputExample" placeholder="Example"&gt;
       &lt;span data-alertid="example"&gt;&lt;/span&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="control-group"&gt;
+  &lt;div class="form-group"&gt;
     &lt;div class="controls"&gt;
       &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
     &lt;/div&gt;
@@ -146,6 +146,18 @@ $(function(){
                        <td>string</td>
                        <td>'bs-form-alert'</td>
                        <td>the ID of the alert</td>
+                     </tr>
+                     <tr>
+                       <td>outer_query</td>
+                       <td>string</td>
+                       <td>'div.form-group'</td>
+                       <td>The query used to find the outer div. For Bootstrap 2 set this to 'div.control-group'.</td>
+                     </tr>
+                     <tr>
+                       <td>css_prefx</td>
+                       <td>string</td>
+                       <td>'has-'</td>
+                       <td>The prefix to use for the alert css classes. For Bootstrap 2 set this to ''.</td>
                      </tr>
                     </tbody>
                   </table>
