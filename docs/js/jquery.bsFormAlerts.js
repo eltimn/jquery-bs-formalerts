@@ -9,10 +9,10 @@
   var BsFormAlerts = function(element, options) {
     var self = this;
 
-    this.element = element;
-    this.options = $.extend({}, $.fn.bsFormAlerts.defaults, options);
+    self.element = element;
+    self.options = $.extend({}, $.fn.bsFormAlerts.defaults, options);
 
-    $(document).on("set-alert-id-"+this.options.alertid, function() {
+    $(document).on("set-alert-id-"+self.options.alertid, function() {
       /**
         * Event data is passed in as multiple params, we
         * want them all as an array starting at the second one.
@@ -22,36 +22,38 @@
       self.renderAlerts(msgs);
     });
 
-    $(document).on("clear-alert-id."+this.options.alertid, function() {
+    $(document).on("clear-alert-id."+self.options.alertid, function() {
       self.clear();
     });
-  };
 
-  BsFormAlerts.prototype = {
-    constructor: BsFormAlerts,
-    clear: function() {
+    self.clear = function() {
       var $this = $(this.element);
-      var $formGroup = this.formGroup($this);
-      this.clearFormGroup($formGroup, this.options);
+      var $formGroup = formGroup($this);
+      clearFormGroup($formGroup, self.options);
       $this.html("");
-    },
-    renderAlerts: function(msgs) {
+    };
+
+    self.renderAlerts = function(msgs) {
       var $this = $(this.element);
 
       if (msgs.length > 0) {
-        var $formGroup = this.formGroup($this);
+        var $formGroup = formGroup($this);
         var priority = highestPriority(msgs);
 
         // clear element
-        this.clearFormGroup($formGroup, this.options);
+        clearFormGroup($formGroup, self.options);
         $this.html("");
 
         var $ul = $("<ul/>");
 
         $.each(msgs, function(ix, it) {
           if (it.message && it.message.length > 0) {
+            var p = bsPriority(it.priority);
+            if (p === "danger") {
+              p = self.options.error_css;
+            }
             var $li = $("<li/>", {
-              'class': 'text-'+bsPriority(it.priority)
+              'class': 'text-'+p
             }).html(it.message);
             $ul.append($li);
           }
@@ -60,58 +62,60 @@
         $this.append($ul);
         var p = bsPriority(priority);
         if (p === "danger") { p = "error"; }
-        $formGroup.addClass(this.options.css_prefx+p);
+        $formGroup.addClass(self.options.css_prefx+p);
       }
-    },
-    formGroup: function($ele) {
-      return $ele.closest(this.options.outer_query);
-    },
-    clearFormGroup: function($ele) {
-      $ele.removeClass(this.options.css_prefx+"info");
-      $ele.removeClass(this.options.css_prefx+"warning");
-      $ele.removeClass(this.options.css_prefx+"error");
-      $ele.removeClass(this.options.css_prefx+"success");
-    }
-  };
+    };
 
-  // "private" functions
-  function bsPriority(it) {
-    if (it === "notice") {
+    // "private" functions
+    function bsPriority(it) {
+      if (it === "notice") {
+        return "info";
+      }
+      else if (it === "error") {
+        return "danger";
+      }
+      return it;
+    }
+
+    function highestPriority(msgs) {
+      var errCnt = $.grep(msgs, function(it) {
+        return it.priority === "error";
+      }).length;
+
+      if (errCnt > 0) {
+        return "error";
+      }
+
+      var warnCnt = $.grep(msgs, function(it) {
+        return it.priority === "warning";
+      }).length;
+
+      if (warnCnt > 0) {
+        return "warning";
+      }
+
+      var successCnt = $.grep(msgs, function(it) {
+        return it.priority === "success";
+      }).length;
+
+      if (successCnt > 0) {
+        return "success";
+      }
+
       return "info";
     }
-    else if (it === "error") {
-      return "danger";
-    }
-    return it;
-  }
 
-  function highestPriority(msgs) {
-    var errCnt = $.grep(msgs, function(it) {
-      return it.priority === "error";
-    }).length;
-
-    if (errCnt > 0) {
-      return "error";
+    function formGroup($ele) {
+      return $ele.closest(self.options.outer_query);
     }
 
-    var warnCnt = $.grep(msgs, function(it) {
-      return it.priority === "warning";
-    }).length;
-
-    if (warnCnt > 0) {
-      return "warning";
+    function clearFormGroup($ele) {
+      $ele.removeClass(self.options.css_prefx+"info");
+      $ele.removeClass(self.options.css_prefx+"warning");
+      $ele.removeClass(self.options.css_prefx+"error");
+      $ele.removeClass(self.options.css_prefx+"success");
     }
-
-    var successCnt = $.grep(msgs, function(it) {
-      return it.priority === "success";
-    }).length;
-
-    if (successCnt > 0) {
-      return "success";
-    }
-
-    return "info";
-  }
+  };
 
   /* BsFormAlerts plugin definition
    * ===================== */
@@ -138,7 +142,8 @@
   $.fn.bsFormAlerts.defaults = {
     alertid: "bs-form-alert",
     outer_query: "div.form-group",
-    css_prefx: "has-"
+    css_prefx: "has-",
+    error_css: "danger"
   };
 
 

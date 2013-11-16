@@ -63,14 +63,14 @@
                     </div>
                     <p>Click submit to see an error alert on the example input field.</p>
                     <form class="bs-docs-example form-horizontal" id="example-form">
-                      <div class="form-group">
+                      <div class="control-group">
                         <label class="control-label" for="inputExample">Example</label>
                         <div class="controls">
                           <input type="text" id="inputExample" placeholder="Example">
-                          <span data-alertid="example"></span>
+                          <span data-alertid="example" data-outer_query="div.control-group" data-css_prefx="" data-error_css="error"></span>
                         </div>
                       </div>
-                      <div class="form-group">
+                      <div class="control-group">
                         <div class="controls">
                           <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
@@ -113,7 +113,7 @@ $(function(){
 });
 &lt;/script&gt;
 </pre>
-                <p><strong>Priority:</strong> error, warning, info, success</p>
+                <p><strong>Priority:</strong> error/danger, warning, info/notice, success</p>
                 </section>
                 <section id="usage">
                   <div class="page-header">
