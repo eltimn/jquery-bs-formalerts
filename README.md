@@ -6,8 +6,8 @@
 - jQuery
 - Bootstrap
 
-[Docs](http://eltimn.github.com/jquery-bs-formalerts)
+[Documentation](https://eltimn.github.com/jquery-bs-formalerts)
 
-[Download](https://raw.github.com/eltimn/jquery-bs-formalerts/master/build/jquery.bsFormAlerts.min.js)
+[Download](https://github.com/eltimn/jquery-bs-formalerts/releases)
 
 **License**: MIT [http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php)

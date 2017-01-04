@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="jQuery plugin for displaying form alerts via jQuery events.">
+  <meta name="author" content="Tim Nelson">
+
+  <title>jQuery Bootstrap Form Alerts</title>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/prettify.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body data-spy="scroll" data-target="#sidebar" data-offset="50">
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/jquery-bs-formalerts/index.html">jQuery Bootstrap Form Alerts</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
+      <ul class="nav nav-sidebar">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#example">Example</a></li>
+        <li><a href="#usage">Usage</a></li>
+        <li><a href="#options">Options</a></li>
+        <li><a href="#events">Events</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h2 class="sub-header"><a id="overview"></a>Overview</h2>
+      <section>
+        <p>
+          A jQuery plugin for displaying Bootstrap form alerts via jQuery events.
+        </p>
+        <p>
+          <h4>Features</h4>
+          <ul>
+            <li>Event based</li>
+            <li>Modeled after Bootstrap's plugins</li>
+            <li>Automatic binding via html attributes.</li>
+          </ul>
+        </p>
+        <a class="btn btn-large btn-primary" href="https://github.com/eltimn/jquery-bs-formalerts/releases">
+          <i class="icon-download-alt icon-white"></i> Download
+        </a>
+        <br /><br />
+      </section>
+      <h2 class="sub-header"><a id="example"></a>Example</h2>
+      <section>
+        <p>Click submit to see an error alert on the example input field.</p>
+        <form class="form-horizontal" id="example-form">
+          <div class="form-group">
+            <label class="control-label" for="inputExample">Example</label>
+            <div class="controls">
+              <input type="text" id="inputExample" class="form-control" placeholder="Example">
+              <span data-alertid="example"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="controls">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </form>
+        <br />
+<pre class="prettyprint linenums">
+&lt;form class="form-horizontal" id="example-form"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label class="control-label" for="inputExample"&gt;Example&lt;/label&gt;
+    &lt;div class="controls"&gt;
+      &lt;input type="text" id="inputExample" placeholder="Example"&gt;
+      &lt;span data-alertid="example"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;div class="controls"&gt;
+      &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+$(function(){
+  $("#example-form").submit(function() {
+    var inputVal = $("#inputExample").val();
+    $(document).trigger("clear-alert-id.example");
+    if (inputVal.length < 3) {
+      $(document).trigger("set-alert-id-example", [
+        {
+          "message": "Please enter at least 3 characters",
+          "priority": "error"
+        },
+        {
+          "message": "This is an info alert",
+          "priority": "info"
+        }
+      ]);
+    }
+  });
+});
+&lt;/script&gt;
+</pre>
+        <p><strong>Priority:</strong> error/danger, warning, info/notice, success</p>
+      </section>
+
+      <h2 class="sub-header"><a id="usage"></a>Usage</h2>
+      <section>
+        <p>Enable binding of an element via JavaScript:</p>
+        <pre class="prettyprint linenums">$("#example").bsFormAlerts({"id": "example"});</pre>
+
+        <h3>Markup</h3>
+        <p>Just add <code>data-alertid="example"</code> to your element to bind automatically.</p>
+        <pre class="prettyprint linenums">&lt;span data-alertid="example"&gt;&lt;/span&gt;</pre>
+      </section>
+
+      <h2 class="sub-header"><a id="options"></a>Options</h2>
+      <section>
+        <table class="table table-bordered table-striped">
+          <thead>
+           <tr>
+             <th>Name</th>
+             <th>type</th>
+             <th>default</th>
+             <th>description</th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+             <td>id</td>
+             <td>string</td>
+             <td>'bs-form-alert'</td>
+             <td>the ID of the alert</td>
+           </tr>
+           <tr>
+             <td>outer_query</td>
+             <td>string</td>
+             <td>'div.form-group'</td>
+             <td>The query used to find the outer div. For Bootstrap 2 set this to 'div.control-group'.</td>
+           </tr>
+           <tr>
+             <td>css_prefix</td>
+             <td>string</td>
+             <td>'has-'</td>
+             <td>The prefix to use for the alert css classes. For Bootstrap 2 set this to '' (empty string).</td>
+           </tr>
+           <tr>
+             <td>error_css</td>
+             <td>string</td>
+             <td>'danger'</td>
+             <td>The alert CSS class suffix to use for danger. For Bootstrap 2 set this to 'error'.</td>
+           </tr>
+          </tbody>
+        </table>
+
+        <p>For use with Bootstrap 2, you can override the defaults so you don't have to supply them on the tags.</p>
+<pre class="prettyprint linenums">
+$.fn.bsFormAlerts.defaults = {
+  alertid: "bs-form-alert",
+  outer_query: "div.control-group",
+  css_prefix: "",
+  error_css: "error"
+};
+</pre>
+      </section>
+      <h2 class="sub-header"><a id="events"></a>Events</h2>
+      <section id="events">
+        <h3>set-alert-id-{alertid}</h3>
+        <p>Each bound element will listen for a set event that will send the alert data as an object. You can also pass an array of alerts, with any priority, and they will all be displayed in their respective color.</p>
+<pre class="prettyprint linenums">
+// send an alert to the element with data-alertid='example'
+$(document).trigger("set-alert-id-example", {
+  "message": "Please enter at least 3 characters",
+  "priority": "error"
+});</pre>
+
+        <h3>clear-alert-id.{alertid}</h3>
+        <p>Each bound element will listen for a clear event that will clear the alert and reset the form element.</p>
+        <p class="alert alert-warning"><strong>Note:</strong> Notice the dot (.) as separator.</p>
+<pre class="prettyprint linenums">
+// clear the element with data-alertid='example'
+$(document).trigger("clear-alert-id.example");</pre>
+
+        <h3>clear-alert-id</h3>
+        <p>Each bound element will also listen for a clear event that will clear all elements. That's the reason for the dot separator.</p>
+<pre class="prettyprint linenums">
+// clear all elements
+$(document).trigger("clear-alert-id");</pre>
+
+        <div class="alert alert-info">
+          <strong>Tip:</strong> Copy and paste the above commands into the JavaScript console to see them in action.
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container">
+          <p>Code licensed under <a href="http://www.opensource.org/licenses/mit-license.php">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <a href="https://github.com/eltimn/jquery-bs-formalerts"><img style="position: absolute; top: 0; right: 0; border: 0;z-index:1200" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+  <script
+    src="//code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"
+  ></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="//cdn.rawgit.com/google/code-prettify/master/loader/prettify.js"></script>
+  <script src="js/jquery.bsFormAlerts.js"></script>
+  <script>
+    $(function() {
+      $("#example-form").submit(function() {
+        var inputVal = $("#inputExample").val();
+        $(document).trigger("clear-alert-id.example");
+        if (inputVal.length < 3) {
+          $(document).trigger("set-alert-id-example", [
+            {
+              "message": "Please enter at least 3 characters",
+              "priority": "error"
+            },
+            {
+              "message": "This is an info alert",
+              "priority": "info"
+            }
+          ]);
+        }
+
+        return false;
+      });
+
+      prettyPrint();
+    });
+  </script>
+</body>
+
+</html>
